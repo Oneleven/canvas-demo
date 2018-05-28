@@ -25,21 +25,41 @@ var context = document.getElementById('drawing').getContext('2d')
 
 
 
+// for(item of points){
+//     context.beginPath()
+//     context.moveTo(item.p[0].x,item.p[0].y)
+
+//     for(point of item.p){
+//         context.lineTo(point.x, point.y)
+//     } 
+
+//     context.fillStyle=item.color
+//     context.closePath()
+//     context.lineWidth = 5
+//     context.strokeStyle = 'white'
+//     context.fill()
+//     context.stroke()
+// }
+
+
 for(item of points){
+    draw(item)
+}
+
+// 用函数封装
+function draw(points){
     context.beginPath()
-    context.moveTo(item.p[0].x,item.p[0].y)
-
-    for(point of item.p){
+    context.moveTo(points.p[0].x, points.p[0].y)
+    for(point of points.p){
         context.lineTo(point.x, point.y)
-    } 
-
-    context.fillStyle=item.color
-    context.closePath()
-    context.lineWidth = 5
+    }
+    context.fillStyle = points.color
     context.strokeStyle = 'white'
+    context.lineWidth = 5
     context.fill()
     context.stroke()
 }
+  
 
   
     
