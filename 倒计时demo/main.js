@@ -1,13 +1,27 @@
 var radius = 8
-const marginTop = 60
-const matginLeft = 30
+var marginTop = 80
+var marginLeft = 30
+var canvasWidth =  768
+var canvasHeight = 1024
 // var endTime = new Date(2018,5,2,1,22,33)  //月份是从0开始的
 var currentSeconds = 0
 var balls = []
 var colors = ['#CCE894','#247BA0','#F294C8','#A796C2','#F8F222','#EF3D61','#F7CB2C','#50514F']
 
 window.onload = function(){
-  var context = document.getElementById('drawing').getContext('2d')
+
+  canvasWidth = document.body.clientWidth
+  canvasHeight = document.body.clientHeight
+  marginLeft = Math.round(canvasWidth/10)
+  marginTop = Math.round(canvasHeight/5)
+  radius = Math.round(canvasWidth*4/5/108)-1
+
+
+  var canvas = document.getElementById('drawing')
+  var context = canvas.getContext('2d')
+  canvas.width = canvasWidth
+  canvas.height = canvasHeight
+
   currentSeconds = getCurrentSeconds()
 
   // 动画简易框架
@@ -30,24 +44,24 @@ function update(){
 
      if( neSeconds !== curSeconds){
       if(parseInt(curHours/10) !== parseInt(neHours/10)){
-        addBalls(matginLeft, marginTop, parseInt(curHours/10))
+        addBalls(marginLeft, marginTop, parseInt(curHours/10))
       }
       if(parseInt(curHours%10) !== parseInt(neHours%10)){
-        addBalls(matginLeft + 15*(radius+1), marginTop, parseInt(curHours%10))
+        addBalls(marginLeft + 15*(radius+1), marginTop, parseInt(curHours%10))
       }
 
       if(parseInt(curMinutes/10) !== parseInt(neMinutes/10)){
-        addBalls(matginLeft + 39*(radius+1), marginTop, parseInt(curMinutes/10) )
+        addBalls(marginLeft + 39*(radius+1), marginTop, parseInt(curMinutes/10) )
       }
       if(parseInt(curMinutes%10) !== parseInt(neMinutes%10)){
-        addBalls(matginLeft + 54*(radius+1), marginTop, parseInt(curMinutes%10) )
+        addBalls(marginLeft + 54*(radius+1), marginTop, parseInt(curMinutes%10) )
       }
 
       if(parseInt(curSeconds/10) !== parseInt(neSeconds/10)){
-        addBalls(matginLeft + 78*(radius+1), marginTop, parseInt(curSeconds/10) )
+        addBalls(marginLeft + 78*(radius+1), marginTop, parseInt(curSeconds/10) )
       }
       if(parseInt(curSeconds%10) !== parseInt(neSeconds%10)){
-        addBalls(matginLeft + 93*(radius+1), marginTop, parseInt(curSeconds%10) )
+        addBalls(marginLeft + 93*(radius+1), marginTop, parseInt(curSeconds%10) )
       }
 
 
@@ -58,6 +72,7 @@ function update(){
 }
 
 
+// 制作小球自由落体运动
 function updateBalls(){
   for(var i=0;i<balls.length;i++){
 
@@ -65,15 +80,29 @@ function updateBalls(){
     balls[i].y += balls[i].vy
     balls[i].vy += balls[i].g
 
-    if(balls[i].y >= 700- radius){
-      balls[i].y = 700- radius
-      balls[i].vy = -balls[i].vy*0.64
+    if(balls[i].y >= canvasHeight- radius){
+      balls[i].y = canvasHeight- radius
+      balls[i].vy = -balls[i].vy*0.7
     }
   }
+
+  var count = 0
+  for(var i=0 ; i<balls.length; i++){
+    if(balls[i].x + radius > 0 && balls[i].x-radius< canvasWidth){
+      balls[count++] = balls[i]
+    }
+  } 
+  while(balls.length > count){
+    balls.pop()
+  }
+  console.log(balls.length)
+
+  
 }
 
 // 创建彩色动画小球并push到数组
 function addBalls(x, y,num){
+  
   for(var i=0;i<digit[num].length;i++){
     for(var j=0;j<digit[num][i].length;j++){
       if(digit[num][i][j] === 1){
@@ -107,14 +136,14 @@ function render( ctx ){
     var minutes = parseInt((currentSeconds - hours*3600)/60)
     var seconds = parseInt(currentSeconds % 60)
 
-    renderDigit(matginLeft, marginTop, parseInt(hours/10) , ctx)
-    renderDigit(matginLeft + 15*(radius+1), marginTop, parseInt(hours%10) , ctx)
-    renderDigit(matginLeft + 30*(radius+1), marginTop, 10 , ctx)
-    renderDigit(matginLeft + 39*(radius+1), marginTop, parseInt(minutes/10) , ctx)
-    renderDigit(matginLeft + 54*(radius+1), marginTop, parseInt(minutes%10) , ctx)
-    renderDigit(matginLeft + 69*(radius+1), marginTop, 10 , ctx)
-    renderDigit(matginLeft + 78*(radius+1), marginTop, parseInt(seconds/10) , ctx)
-    renderDigit(matginLeft + 93*(radius+1), marginTop, parseInt(seconds%10) , ctx)
+    renderDigit(marginLeft, marginTop, parseInt(hours/10) , ctx)
+    renderDigit(marginLeft + 15*(radius+1), marginTop, parseInt(hours%10) , ctx)
+    renderDigit(marginLeft + 30*(radius+1), marginTop, 10 , ctx)
+    renderDigit(marginLeft + 39*(radius+1), marginTop, parseInt(minutes/10) , ctx)
+    renderDigit(marginLeft + 54*(radius+1), marginTop, parseInt(minutes%10) , ctx)
+    renderDigit(marginLeft + 69*(radius+1), marginTop, 10 , ctx)
+    renderDigit(marginLeft + 78*(radius+1), marginTop, parseInt(seconds/10) , ctx)
+    renderDigit(marginLeft + 93*(radius+1), marginTop, parseInt(seconds%10) , ctx)
 
 
     // 绘制动画小球
