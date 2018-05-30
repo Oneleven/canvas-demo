@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小球运动轨迹</title>
+</head>
+<body>
+    <canvas id="sport" height="768" width="1024"></canvas>
+
+    <script>
+        var ball = {x:512, y:100, r:20, vx:5, vy:-4, color:'red' , g:3}
+        window.onload = ()=>{
+            var canvas = document.getElementById('sport')
+            var context = canvas.getContext('2d')
+            setInterval(()=>{
+                render(context)
+                update()
+            },50)
+        }
+   
+        function update(){
+            ball.x += ball.vx
+            ball.y += ball.vy
+            ball.vy += ball.g
+            if(ball.y >= 768- ball.r){
+                ball.y = 768 - ball.r
+                ball.vy = -0.5*ball.vy
+            }
+        }
+
+        function render(ctx){
+            ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height)
+            ctx.fillStyle = ball.color 
+
+            ctx.beginPath()
+            ctx.arc(ball.x, ball.y, ball.r, 0 , Math.PI*2)
+            ctx.closePath()
+
+            ctx.fill()
+        }
+    
+    </script>
+</body>
+</html>
