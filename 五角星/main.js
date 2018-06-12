@@ -79,15 +79,16 @@ function drawStar(ctx, x, y, r, rotate){
     ctx.save()
     ctx.translate(x, y)
     ctx.rotate( Math.PI/180 * rotate)
+    ctx.scale(r, r)
 
     fivePointStar(ctx)
     // 先绘制标准的五角星，然后根据变形绘制x, y偏移量，大小为r， 旋转角度为rotate的五角星
     ctx.fillStyle = '#fb3'
-    ctx.strokeStyle = '#fd5'
-    ctx.lineWidth = 3
-    ctx.lineJoin = 'round'
+    // ctx.strokeStyle = '#fd5'
+    // ctx.lineWidth = 3
+    // ctx.lineJoin = 'round'
     ctx.fill()
-    ctx.stroke()
+    // ctx.stroke()
 
     ctx.restore()
 }
@@ -97,8 +98,8 @@ function fivePointStar(ctx){
     ctx.lineWidth = 3
     ctx.beginPath()
     for(let i = 0;i<5;i++){
-        ctx.lineTo(20*Math.cos(Math.PI/180*(18+ 72*i)), -20*Math.sin(Math.PI/180*(18 + 72*i )))
-        ctx.lineTo(10*Math.cos(Math.PI/180*(54+ 72*i)), -10*Math.sin(Math.PI/180*(54 + 72*i )))
+        ctx.lineTo(Math.cos(Math.PI/180*(18+ 72*i)), -Math.sin(Math.PI/180*(18 + 72*i )))
+        ctx.lineTo(0.5*Math.cos(Math.PI/180*(54+ 72*i)), -0.5*Math.sin(Math.PI/180*(54 + 72*i )))
     }
     ctx.closePath()
 }
@@ -106,9 +107,9 @@ function fivePointStar(ctx){
 
 for(let i = 0; i<100 ; i++){
     var x = Math.random()
-    var r = Math.random()*10 + 15
+    var r = Math.random()*5 +5 
     var x = Math.random()*canvas.width
-    var y = Math.random()*canvas.height
+    var y = Math.random()*canvas.height*0.6
     drawStar(context, x, y, r, 30)
 }
 }
