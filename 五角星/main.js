@@ -93,6 +93,19 @@ function drawStar(ctx, x, y, r, rotate){
     ctx.restore()
 }
 
+
+for(let i = 0; i<150 ; i++){
+    var x = Math.random()
+    var r = Math.random()*5 +5 
+    var x = Math.random()*canvas.width
+    var y = Math.random()*canvas.height*0.65
+    drawStar(context, x, y, r, 30)
+}
+
+fillMoon(context, 850, 200, 100, 2, 30)
+
+}
+
 //标准的五角星
 function fivePointStar(ctx){ 
     ctx.lineWidth = 3
@@ -105,11 +118,30 @@ function fivePointStar(ctx){
 }
 
 
-for(let i = 0; i<100 ; i++){
-    var x = Math.random()
-    var r = Math.random()*5 +5 
-    var x = Math.random()*canvas.width
-    var y = Math.random()*canvas.height*0.6
-    drawStar(context, x, y, r, 30)
+
+
+//月亮
+function fillMoon(ctx, x, y, radius, d, rotate){
+    ctx.save()
+    ctx.fillStyle='#fd5'
+    ctx.translate(x, y)
+    ctx.rotate(Math.PI/180 * rotate)
+    ctx.scale(radius, radius)
+
+    pathMoon(ctx, d)
+
+    ctx.fill()
+    ctx.restore()
 }
+
+function pathMoon(ctx, d){
+    ctx.beginPath();
+    ctx.arc(0, 0, 1, Math.PI*0.5, Math.PI* 1.5, true);
+    ctx.moveTo(0,-1)
+    ctx.arcTo(d, 0, 0, 1, Radius(0, -1, d, 0)/d);   
+    ctx.closePath();
+}
+
+function Radius(x1, y1, x2, y2){
+    return Math.sqrt((y2-y1)*(y2-y1) + (x2-x1)*(x2-x1))
 }
