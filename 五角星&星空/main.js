@@ -96,8 +96,8 @@ function drawStar(ctx, x, y, r, rotate){
 for(let i = 0; i<150 ; i++){
     var x = Math.random()
     var r = Math.random()*5 +5 
-    var x = Math.random()*canvas.width
-    var y = Math.random()*canvas.height*0.65
+    var x = Math.random()*(canvas.width-2*r) + r
+    var y = Math.random()*(canvas.height*0.65 - 2*r) + r
     drawStar(context, x, y, r, 30)
 }
 
