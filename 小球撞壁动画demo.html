@@ -7,7 +7,7 @@
     <title>文字demo</title>
 </head>
 <body>
-    <canvas id="drawing" width="1200" height="800"></canvas>
+    <canvas id="drawing" width="1200" height="800" style="border: 1px solid black"></canvas>
     <script>
     
     var context = document.getElementById('drawing').getContext('2d')
@@ -58,6 +58,8 @@
 
     function drawBalls(ctx){
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+        ctx.globalCompositeOperation='ighter';
+        
         for(let i=0; i<balls.length; i++){
             ctx.beginPath()
             ctx.fillStyle = balls[i].color
@@ -66,6 +68,20 @@
             ctx.closePath()
         }
        
+    }
+
+    function update(){
+        for(let i = 0;i<balls.length; i++){
+            balls[i].x = balls[i].x + balls[i].vx
+            balls[i].y = balls[i].y + balls[i].vy
+            if(balls[i].x <= balls[i].radius || balls[i].x >= context.canvas.width-balls[i].radius){
+                balls[i].vx = -balls[i].vx
+            }
+
+            if(balls[i].y <= balls[i].radius || balls[i].y >= context.canvas.height-balls[i].radius){
+                balls[i].vy = -balls[i].vy
+            }
+        }
     }
 
 
