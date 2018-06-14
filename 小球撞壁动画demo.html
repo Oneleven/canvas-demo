@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文字demo</title>
+</head>
+<body>
+    <canvas id="drawing" width="1200" height="800"></canvas>
+    <script>
+    
+    var context = document.getElementById('drawing').getContext('2d')
+
+
+    // 文字 + 阴影
+    // context.shadowColor = 'black'
+    // context.shadowOffsetX = 5
+    // context.shadowOffsetY = 5
+    // context.shadowBlur = 3
+
+    // context.font= "bold 140px Arial "
+    // context.textAlign = 'center'
+    // context.textBaseline = 'middle'
+
+    // context.fillStyle = '#888888'
+    // context.fillText('这是一个测试aa', 600,400)
+     
+    
+
+    //随机圆
+    context.globalAlpha = 0.7
+    var balls = []
+    for(let i=0; i<150; i++){
+        var R = Math.floor(Math.random()*255)
+        var G = Math.floor(Math.random()*255)
+        var B = Math.floor(Math.random()*255)
+        var radius = Math.random()*50
+        var aBall = {
+            color: `rgb(${R},${G},${B})`,
+            radius:radius,
+            x:Math.random()*(context.canvas.width-2*radius) + radius,  //不超出边框
+            y:Math.random()*(context.canvas.height-2*radius) + radius,
+            vx:(Math.random()*5+5) * Math.pow(-1, Math.floor(Math.random()*100)),
+            vy:(Math.random()*5+5) * Math.pow(-1, Math.floor(Math.random()*100))  
+        }
+
+        balls[i] = aBall
+    }
+
+
+
+    setInterval(()=>{
+        drawBalls(context)
+        update()
+    },50)
+
+
+    function drawBalls(ctx){
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+        for(let i=0; i<balls.length; i++){
+            ctx.beginPath()
+            ctx.fillStyle = balls[i].color
+            ctx.arc(balls[i].x, balls[i].y, balls[i].radius, 0, Math.PI*2)
+            ctx.fill()
+            ctx.closePath()
+        }
+       
+    }
+
+
+
+    </script>
+</body>
+</html>
