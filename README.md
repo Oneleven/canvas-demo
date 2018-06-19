@@ -6,6 +6,8 @@
 
 [用canvas来写字](https://oneleven.github.io/canvas-demo/写字demo/index.html)
 
+[用canvas实现滤镜效果](https://oneleven.github.io/canvas-demo/图片像素处理demo/index.html)
+
 [星空渐变色背景](https://oneleven.github.io/canvas-demo/五角星&星空/index.html)
 
 [绘制弯月](https://oneleven.github.io/canvas-demo/arcTo绘制月亮/index.html)
