@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>isPointInPath_demo</title>
+</head>
+<body>
+    <canvas id="drawing" width=1200 height="800"> 请更换浏览器</canvas>
+    <script>
+
+    var context = document.getElementById('drawing').getContext('2d')
+    var balls = []
+    
+    window.onload = function(){
+     for(let i=0; i<15 ; i++){
+        var radius = Math.random()*10 + 40 
+        var aBall = {
+        r:radius ,
+        x:Math.random()*(context.canvas.width-2*radius) +radius,
+        y:Math.random()*(context.canvas.height-2*radius) +radius
+    }
+        context.beginPath()
+        context.fillStyle = '#6fa8dc'
+        context.arc(aBall.x, aBall.y, aBall.r, 0, Math.PI*2)
+        context.fill()
+        balls[i] = aBall
+    }
+
+    context.canvas.addEventListener('click' , detect)
+    }
+    
+    function detect(e){
+        //在canvas中获取鼠标点的位置
+        // var x = e.clientX - context.canvas.getBoundingClientRect().left
+        // var y = e.clientY - context.canvas.getBoundingClientRect().top
+
+        var x = e.offsetX  //效果一样！！！！
+        var y = e.offsetY
+
+        for(let i=0; i<15; i++){
+            context.beginPath()
+            context.arc(balls[i].x, balls[i].y, balls[i].r, 0 , Math.PI*2)
+            if( context.isPointInPath(x,y)){
+                context.fillStyle = 'red'
+                context.fill()
+            }
+        }
+    }
+    
+    
+    
+    </script>
+</body>
+</html>

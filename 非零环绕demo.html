@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>非零环绕demo</title>
+</head>
+<body>
+    <canvas id="drawing" width="1200" height="800">请更换浏览器</canvas>
+
+    <script>
+    
+    var context = document.getElementById('drawing').getContext('2d')
+
+    var grd = context.createLinearGradient(600 ,200 ,600, 600)
+    grd.addColorStop(0.0, '#888888')
+    grd.addColorStop(1.0, '#666666')
+    
+    context.fillStyle = grd
+    context.shadowColor = 'black'
+    context.shadowOffsetX = 3
+    context.shadowOffsetY = 3
+    context.shadowBlur = 5
+    context.arc(600, 400, 200, 0 , Math.PI*2, false)
+    context.arc(600, 400, 150, 0, Math.PI*2, true)
+    context.fill()
+
+    </script>
+</body>
+</html>
