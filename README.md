@@ -14,4 +14,4 @@
 
 [用canvas来写字](https://oneleven.github.io/canvas-demo/写字demo/index.html)
 
-#####  
+[用canvas设置水印](https://oneleven.github.io/canvas-demo/用canvas设置水印/index.html)
