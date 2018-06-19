@@ -1,0 +1,76 @@
+
+#controller{
+    display: flex;
+    justify-content:space-between;
+    margin:10px auto;
+   
+}
+
+#drawing{
+    display: block;
+    margin:0 auto;
+}
+
+#colors{
+    display: flex;
+    flex-direction: row;
+}
+
+#colors > div{
+    width:3vw;
+    height: 3vw;
+    margin-left: 1.5vw;
+    border-radius: 50%;
+}
+#colors > .active{
+    border:2px solid #84C4F6
+}
+
+#black_button{
+    background:black;
+    border:2px solid transparent;
+}
+
+#black_button:hover{
+    border:2px solid #84C4F6
+}
+
+#blue_button{
+    background:blue;
+    border:2px solid transparent
+}
+
+#blue_button:hover{
+    border:2px solid #84C4F6
+}
+
+#green_button{
+    background:green;
+    border:2px solid transparent
+}
+
+#green_button:hover{
+    border:2px solid #84C4F6
+}
+
+#red_button{
+    background:red;
+    border:2px solid transparent
+}
+
+#red_button:hover{
+    border:2px solid #84C4F6
+}
+
+#yellow_button{
+    background:yellow;
+    border:2px solid transparent
+}
+
+#yellow_button:hover{
+    border:2px solid #84C4F6
+}
+
+
+
+

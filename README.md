@@ -12,4 +12,6 @@
 
 [倒计时demo](https://oneleven.github.io/canvas-demo/倒计时demo/index.html)
 
-##### 
+[用canvas来写字](https://oneleven.github.io/canvas-demo/写字demo/index.html)
+
+#####  
