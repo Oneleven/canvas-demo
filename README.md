@@ -2,7 +2,7 @@
 
 [七巧板demo](https://oneleven.github.io/canvas-demo/七巧板demo/index.html)
 
-[星空渐变色背景](https://oneleven.github.io/canvas-demo/五角星/index.html)
+[星空渐变色背景](https://oneleven.github.io/canvas-demo/五角星&星空/index.html)
 
 [绘制弯月](https://oneleven.github.io/canvas-demo/arcTo绘制月亮/index.html)
 
