@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>放大镜效果demo</title>
+    <title>像素处理-滤镜demo</title>
 </head>
 <body>
     <div style="display: flex; justify-content: space-around;">
-        <canvas id="beforeDrawing" width="640" height="400" style="border: 1px solid black; margin-top:100px"> 请更换浏览器</canvas>
-        <canvas id="afterDrawing" width="640" height="400" style="border: 1px solid black; margin-top:100px"> 请更换浏览器</canvas>
+        <canvas id="beforeDrawing" width="640" height="400" style="border: 1px solid black; margin-top:50px"> 请更换浏览器</canvas>
+        <canvas id="afterDrawing" width="640" height="400" style="border: 1px solid black; margin-top:50px"> 请更换浏览器</canvas>
     </div>
-    <a href="javascript:greyFilter()" style="text-decoration: none; display: block; text-align:center; margin-top: 50px">灰度</a>
+    <a href="javascript:greyFilter()" style="text-decoration: none; display: block; text-align:center; margin-top: 20px">灰度</a>
     <a href="javascript:blackFilter()" style="text-decoration: none; display: block; text-align:center; margin-top: 20px">黑白</a>
     <a href="javascript:reverseFilter()" style="text-decoration: none; display: block; text-align:center; margin-top: 20px">反色</a>
     <a href="javascript:blurFilter()" style="text-decoration: none; display: block; text-align:center; margin-top: 20px">模糊</a>
+    <a href="javascript:mosaicFilter()" style="text-decoration: none; display: block; text-align:center; margin-top: 20px">马赛克</a>
     <!-- 伪协议，点击a标签直接调用函数filter -->
     <script src='./main.js'></script>
 </body>
