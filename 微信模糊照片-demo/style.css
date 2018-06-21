@@ -1,0 +1,56 @@
+#container{
+    position: relative;
+    height: 450px;
+}
+
+
+img{
+    filter: blur(30px);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+#drawing{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+#controls{
+    position: relative;
+    display:flex;
+    width:400px;
+    margin:100px auto;
+    justify-content: space-around;
+}
+
+#controls :nth-child(1){
+    border: transparent;
+    border-radius: 4px;
+    background-color: #F25F5C;
+    width:50px;
+    height:30px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#controls :nth-child(1):hover{
+    background-color: rgb(241, 49, 46);
+    filter:drop-shadow(1px 1px 1px #444444)
+}
+
+#controls :nth-child(2){
+    border: transparent;
+    border-radius: 4px;
+    background-color: #247BA0;
+    width:50px;
+    height:30px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#controls :nth-child(2):hover{
+    background-color: rgb(23, 148, 202);
+    filter:drop-shadow(1px 1px 1px #444444)
+}
